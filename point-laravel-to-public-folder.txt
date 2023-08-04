@@ -1,0 +1,10 @@
+AddHandler application/x-httpd-php81 .php .php5 .php4 .php3
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^app.example.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.app.example.com$
+RewriteCond %{REQUEST_URI} !example/public/
+RewriteRule (.*) /example/public/$1 [L]
+
+Options +ExecCGI +FollowSymlinks -SymLinksIfOwnerMatch
+
